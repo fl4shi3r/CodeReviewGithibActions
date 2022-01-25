@@ -46,7 +46,6 @@ jobs:
           echo . | pyre init
           pyre
 
-      pip install pyre-check
       ################################
       # CodeQL #
       ################################
