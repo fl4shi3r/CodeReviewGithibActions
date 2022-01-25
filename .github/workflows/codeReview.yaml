@@ -16,6 +16,7 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: master
+          VALIDATE_[Python3]: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       ################################
       # CodeQL #
