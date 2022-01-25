@@ -22,6 +22,18 @@ jobs:
           VALIDATE_PYTHON_MYPY: true
           VALIDATE_PYTHON_PYLINT: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      ################################
+      # PyRight                     #
+      ################################
+      - name: Install PyRight Plugins
+        if: always()
+        run: pip3 install pyright
+
+      - name: Run Tflint
+        if: always()
+        run: pyright .
+      
       ################################
       # CodeQL #
       ################################
