@@ -78,8 +78,20 @@ jobs:
       - name: Run vulture
         if: always()
         run: vulture .
+       ################################
+      # semgrep                  #
+      ################################
+      - name: Install semgrep Plugins
+        if: always()
+        run: python3 -m pip install semgrep
 
-
+      - name: Run vulture
+        if: always()
+        run: |
+          semgrep --config "p/ci" .
+          semgrep --config "p/r2c-ci" .
+          semgrep --config "p/python" .
+ 
 
       ################################
       # CodeQL #
