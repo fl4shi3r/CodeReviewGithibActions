@@ -66,6 +66,19 @@ jobs:
       - name: Run bandit
         if: always()
         run: bandit -r .
+      
+      ################################
+      # vulture                  #
+      ################################
+      - name: Install vulture Plugins
+        if: always()
+        run: pip3 install vulture
+
+      - name: Run vulture
+        if: always()
+        run: vulture .
+
+
 
       ################################
       # CodeQL #
