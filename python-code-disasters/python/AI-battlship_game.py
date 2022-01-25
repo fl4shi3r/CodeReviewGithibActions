@@ -12,6 +12,7 @@ class AI(Player):
         """
         With this method computer places ships on the game field
         :param size: size of the ship
+        test code code code
         """
         old_field = list(self.field)
         upd_field = list(self.field)
