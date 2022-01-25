@@ -13,7 +13,7 @@ jobs:
       - name: Lint Code Base
         uses: github/super-linter/slim@v4
         env:
-          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ALL_CODEBASE: false
           VALIDATE_PYTHON: true
           VALIDATE_PYTHON_BLACK: true
           VALIDATE_PYTHON_FLAKE8: true
@@ -34,17 +34,27 @@ jobs:
         run: pyright .
       
       ################################
-      # PyRight                     #
+      # PyRe                       #
       ################################
-      - name: Install PyRight Plugins
+      - name: Install PyRe Plugins
         if: always()
         run: pip3 install pyre-check
 
-      - name: Run PyRight
+      - name: Run PyRe
         if: always()
         run: |
           echo . | pyre init
           pyre
+      ################################
+      # pycodestyle                       #
+      ################################
+      - name: Install pycodestyle Plugins
+        if: always()
+        run: pip3 install pycodestyle
+
+      - name: Run PyRe
+        if: always()
+        run: pycodestyle .
 
       ################################
       # CodeQL #
