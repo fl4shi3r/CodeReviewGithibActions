@@ -100,7 +100,7 @@ jobs:
         if: always()
         uses: github/codeql-action/init@v1
         with:
-          languages: python
+          languages: [ 'python' ]
 
       # Here is where you build your code
       - run: |
