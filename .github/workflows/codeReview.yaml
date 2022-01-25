@@ -1,4 +1,4 @@
-name: TFLint
+name: Code Review
 on: [push]
   
 jobs:
@@ -6,3 +6,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      ################################
+      # Super Linter #
+      ################################
+      - name: Lint Code Base
+        if: always()
+        uses: github/super-linter/slim@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ################################
+      # CodeQL #
+      ################################
+      # - name: Initialize CodeQL
+      #   if: always()
+      #   uses: github/codeql-action/init@v1
+      #   with:
+      #     languages: go, javascript
+
+      # # Here is where you build your code
+      # - run: |
+      #     make bootstrap
+      #     make release
+
+      # - name: Perform CodeQL Analysis
+      #   if: always()
+      #   uses: github/codeql-action/analyze@v1
