@@ -46,15 +46,26 @@ jobs:
           echo . | pyre init
           pyre
       ################################
-      # pycodestyle                       #
+      # pycodestyle                  #
       ################################
       - name: Install pycodestyle Plugins
         if: always()
         run: pip3 install pycodestyle
 
-      - name: Run PyRe
+      - name: Run pycodestyle
         if: always()
         run: pycodestyle .
+
+      ################################
+      # bandit                  #
+      ################################
+      - name: Install bandit Plugins
+        if: always()
+        run: pip3 install bandit
+
+      - name: Run bandit
+        if: always()
+        run: bandit -r .
 
       ################################
       # CodeQL #
