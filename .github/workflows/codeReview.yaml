@@ -93,20 +93,3 @@ jobs:
           semgrep --config "p/python" .
  
 
-      ################################
-      # CodeQL #
-      ################################
-      - name: Initialize CodeQL
-        if: always()
-        uses: github/codeql-action/init@v1
-        with:
-          languages: go, javascript
-
-      # Here is where you build your code
-      - run: |
-          make bootstrap
-          make release
-
-      - name: Perform CodeQL Analysis
-        if: always()
-        uses: github/codeql-action/analyze@v1
