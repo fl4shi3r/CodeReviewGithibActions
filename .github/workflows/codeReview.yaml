@@ -92,22 +92,3 @@ jobs:
           semgrep --config "p/r2c-ci" .
           semgrep --config "p/python" .
  
-
-      ################################
-      # CodeQL #
-      ################################
-      - name: Initialize CodeQL
-        if: always()
-        uses: github/codeql-action/init@v1
-        with:
-          languages: python
-
-      # Here is where you build your code
-      - run: |
-          make bootstrap
-          make release
-
-      - name: Perform CodeQL Analysis
-        if: always()
-        uses: github/codeql-action/analyze@v1
-        
