@@ -85,7 +85,7 @@ jobs:
         if: always()
         run: python3 -m pip install semgrep
 
-      - name: Run vulture
+      - name: Run Semgrep
         if: always()
         run: |
           semgrep --config "p/ci" .
