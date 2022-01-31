@@ -1,5 +1,5 @@
 name: Code Review
-on: [push]
+on: [push, pull_request]
   
 jobs:
   CodeReview:
@@ -10,74 +10,74 @@ jobs:
       ################################
       # Super Linter #
       ################################
-      - name: Lint Code Base
-        uses: github/super-linter/slim@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          VALIDATE_PYTHON: true
-          DEFAULT_BRANCH: main
-          VALIDATE_PYTHON_BLACK: true
-          VALIDATE_PYTHON_FLAKE8: true
-          VALIDATE_PYTHON_ISORT: true
-          VALIDATE_PYTHON_MYPY: true
-          VALIDATE_PYTHON_PYLINT: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Lint Code Base
+#         uses: github/super-linter/slim@v4
+#         env:
+#           VALIDATE_ALL_CODEBASE: false
+#           VALIDATE_PYTHON: true
+#           DEFAULT_BRANCH: main
+#           VALIDATE_PYTHON_BLACK: true
+#           VALIDATE_PYTHON_FLAKE8: true
+#           VALIDATE_PYTHON_ISORT: true
+#           VALIDATE_PYTHON_MYPY: true
+#           VALIDATE_PYTHON_PYLINT: true
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      ################################
-      # PyRight                     #
-      ################################
-      - name: Install PyRight Plugins
-        if: always()
-        run: pip3 install pyright
+#       ################################
+#       # PyRight                     #
+#       ################################
+#       - name: Install PyRight Plugins
+#         if: always()
+#         run: pip3 install pyright
 
-      - name: Run PyRight
-        if: always()
-        run: pyright .
+#       - name: Run PyRight
+#         if: always()
+#         run: pyright .
       
-      ################################
-      # PyRe                       #
-      ################################
-      - name: Install PyRe Plugins
-        if: always()
-        run: pip3 install pyre-check
+#       ################################
+#       # PyRe                       #
+#       ################################
+#       - name: Install PyRe Plugins
+#         if: always()
+#         run: pip3 install pyre-check
 
-      - name: Run PyRe
-        if: always()
-        run: |
-          echo . | pyre init
-          pyre
-      ################################
-      # pycodestyle                  #
-      ################################
-      - name: Install pycodestyle Plugins
-        if: always()
-        run: pip3 install pycodestyle
+#       - name: Run PyRe
+#         if: always()
+#         run: |
+#           echo . | pyre init
+#           pyre
+#       ################################
+#       # pycodestyle                  #
+#       ################################
+#       - name: Install pycodestyle Plugins
+#         if: always()
+#         run: pip3 install pycodestyle
 
-      - name: Run pycodestyle
-        if: always()
-        run: pycodestyle .
+#       - name: Run pycodestyle
+#         if: always()
+#         run: pycodestyle .
 
-      ################################
-      # bandit                  #
-      ################################
-      - name: Install bandit Plugins
-        if: always()
-        run: pip3 install bandit
+#       ################################
+#       # bandit                  #
+#       ################################
+#       - name: Install bandit Plugins
+#         if: always()
+#         run: pip3 install bandit
 
-      - name: Run bandit
-        if: always()
-        run: bandit -r .
+#       - name: Run bandit
+#         if: always()
+#         run: bandit -r .
       
-      ################################
-      # vulture                  #
-      ################################
-      - name: Install vulture Plugins
-        if: always()
-        run: pip3 install vulture
+#       ################################
+#       # vulture                  #
+#       ################################
+#       - name: Install vulture Plugins
+#         if: always()
+#         run: pip3 install vulture
 
-      - name: Run vulture
-        if: always()
-        run: vulture .
+#       - name: Run vulture
+#         if: always()
+#         run: vulture .
        ################################
       # semgrep                  #
       ################################
